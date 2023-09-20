@@ -3,6 +3,26 @@
 
 # COMMAND ----------
 
+# DBTITLE 1,Library Imports
+import pandas as pd
+
+# COMMAND ----------
+
+# DBTITLE 1,Get the Apache Atlas Template File Path
+notebook_path = dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get()
+template_folder_path = f"file:/Workspace{notebook_path.rsplit('/', 1)[0]}/source_file"
+template_filename = "Metastore_paths_info.xlsx"
+template_file_path = f"{template_folder_path}/{template_filename}"
+print(f"template_file_path: {template_file_path}")
+
+# COMMAND ----------
+
+# DBTITLE 1,Read Template File into Spark Dataframe
+df_template = spark.createDataFrame(pd.read_excel(template_file_path))
+display(df_template)
+
+# COMMAND ----------
+
 import json
 import os
 
