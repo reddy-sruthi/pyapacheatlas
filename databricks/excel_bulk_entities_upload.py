@@ -1,4 +1,8 @@
 # Databricks notebook source
+dbutils.fs.ls("file:/Workspace")
+
+# COMMAND ----------
+
 # MAGIC %pip install openpyxl pyapacheatlas
 
 # COMMAND ----------
